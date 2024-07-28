@@ -30,7 +30,7 @@ contract Moncock is ERC721A, Ownable {
     }
 
     // mint
-    function adminMint(uint quantity) external onlyOwner {
+    function mint(uint quantity) external onlyOwner {
         _checkSupplyAndMint(msg.sender, quantity);
     }
     function _checkSupplyAndMint(address to, uint256 quantity) private {
