@@ -6,7 +6,7 @@ IMG_PATH  = '../docs/assets/*'
 JSON_PATH = '../docs/json/{}.json'
 IMG_URL   = 'https://moncock.github.io/moncock-db/assets/{}'
 
-TITLE     = 'Moncock'
+TITLE     = 'Moncock OG'
 DESC      = 'We are Moncock'
 
 # prepare image mapper
@@ -28,7 +28,7 @@ for (code, holder, artist) in chars:
 
     # clean up data
     if not holder:
-        holder = 'N/A'
+        holder = 'Unknown'
 
     # craft data
     metadata = {

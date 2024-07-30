@@ -5,11 +5,11 @@ import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract Moncock is ERC721A, Ownable {
+contract MoncockOG is ERC721A, Ownable {
 
     // config
     constructor(address initialOwner)
-        ERC721A("Moncock", "MONCOCK")
+        ERC721A("Moncock OG", "MONCOCKOG")
         Ownable(initialOwner) {
     }
     uint256 public MAX_SUPPLY = 200;
