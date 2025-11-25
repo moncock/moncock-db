@@ -28,7 +28,7 @@ for (_, code, holder, artist, event, _, _, _, _, _, _, _) in chars:
     #
     no       = code[4:]
     token_id = int(no)
-    img      = img_mapper.get(no, '999_genesis.png')
+    img      = img_mapper.get(no, '999.png')
     dest     = JSON_PATH.format(token_id)
 
     # clean up data
