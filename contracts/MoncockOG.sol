@@ -12,7 +12,6 @@ contract MoncockOG is ERC721A, Ownable {
         ERC721A("Moncock OG", "MONCOCKOG")
         Ownable(initialOwner) {
     }
-    uint256 public MAX_SUPPLY = 200;
     uint256 private START_ID  = 1;
     string private baseURI    = "https://moncock.github.io/moncock-db/json/";
 
@@ -31,20 +30,12 @@ contract MoncockOG is ERC721A, Ownable {
 
     // mint
     function mint(uint quantity) external onlyOwner {
-        _checkSupplyAndMint(msg.sender, quantity);
-    }
-    function _checkSupplyAndMint(address to, uint256 quantity) private {
-        require(_totalMinted() + quantity <= MAX_SUPPLY, "Over supply");
-
-        _mint(to, quantity);
+        _mint(msg.sender, quantity);
     }
 
     // aliases
     function numberMinted(address owner) external view returns (uint256) {
         return _numberMinted(owner);
-    }
-    function remainingSupply() external view returns (uint256) {
-        return MAX_SUPPLY - _totalMinted();
     }
 
 }
