@@ -20,15 +20,22 @@ chars = [ line.strip().split(',') for line in open(CSV_PATH, 'r') ]
 chars = chars[1:] # remove header
 
 # create json file
-for (code, holder, artist) in chars:
+for (_, code, holder, artist, event, _, _, _, _, _, _, _) in chars:
+    code     = code.strip()
+    holder   = holder.strip()
+    artist   = artist.strip()
+    event    = event.strip()
+    #
     no       = code[4:]
     token_id = int(no)
-    img      = img_mapper[no]
+    img      = img_mapper.get(no, '999_genesis.png')
     dest     = JSON_PATH.format(token_id)
 
     # clean up data
     if not holder:
         holder = 'Unknown'
+    if not artist:
+        artist = 'Unknown'
 
     # craft data
     metadata = {
@@ -41,6 +48,8 @@ for (code, holder, artist) in chars:
         { 'trait_type': 'Artist',   'value': artist },
       ],
     }
+    if event:
+        metadata['attributes'].append({ 'trait_type': 'Event',   'value': event })
 
     # write file
     print(dest)
