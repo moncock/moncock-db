@@ -15,6 +15,16 @@ for path in glob.glob(IMG_PATH):
     filename = path.split('/')[3]
     img_mapper[filename[:3]] = filename
 
+# artist mapper
+artist_mapper = {
+    '@Yves_truong'  : 'golden.pigy',
+    '@MMminimk'     : '22x22_27341',
+    'notpopnad'     : 'popnad',
+    '@tigger_landb' : 'tiggerland',
+    '@adamdotmon'   : 'adam.mon',
+    '@eric168eth'   : 'eric6414',
+}
+
 # load data from csv
 chars = [ line.strip().split(',') for line in open(CSV_PATH, 'r') ]
 chars = chars[1:] # remove header
@@ -36,6 +46,7 @@ for (_, code, holder, artist, event, _, _, _, _, _, _, _) in chars:
         holder = 'Unknown'
     if not artist:
         artist = 'Unknown'
+    artist = artist_mapper.get(artist, artist)
 
     # craft data
     metadata = {
